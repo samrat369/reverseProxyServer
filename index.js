@@ -36,8 +36,8 @@ passport.use(new Auth0Strategy({
     domain: 'dev-npofkt2fait2dmyy.us.auth0.com',
     clientID: 'zz8J0DCF3tD8vUVNiBpKqu5u3xtO1vYg',
     clientSecret: 'xl8D_ggiFek6o7L3BFW7DtxlOVBm0D1KIuABxanMvG6cL2uTsFvuKCrkM9T5biOa',
-    callbackURL: 'http://localhost:8000/callback',
-    logoutUrl:'http://localhost:8000/'
+    callbackURL: 'https://rpaccessmanagementfoundationlabproxy.onrender.com/callback',
+    logoutUrl:'https://rpaccessmanagementfoundationlabproxy.onrender.com/'
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
     // Store user information in session or database
@@ -106,7 +106,7 @@ app.get('/callback', passport.authenticate('auth0', {
 }), (req, res) => {
   // Successful authentication, redirect to the home page or another protected route
   
-  res.redirect('http://localhost:8000/');
+  res.redirect('https://rpaccessmanagementfoundationlabproxy.onrender.com/');
 });
 
 // Home route
@@ -118,7 +118,7 @@ app.get('/', (req, res) => {
     res.render('index', { username });
   } else {
     // User is not authenticated, redirect to the login page
-    res.redirect('http://localhost:8000/login');
+    res.redirect('https://rpaccessmanagementfoundationlabproxy.onrender.com/login');
   }
 });
 
@@ -132,7 +132,7 @@ app.get('/', (req, res) => {
         // Clear any cookies related to authentication
         res.clearCookie('connect.sid');
         // Redirect the user to the desired page after logout
-        res.redirect("https://dev-npofkt2fait2dmyy.us.auth0.com/v2/logout?returnTo=http://localhost:8000/&client_id=zz8J0DCF3tD8vUVNiBpKqu5u3xtO1vYg");
+        res.redirect("https://dev-npofkt2fait2dmyy.us.auth0.com/v2/logout?returnTo=https://rpaccessmanagementfoundationlabproxy.onrender.com/&client_id=zz8J0DCF3tD8vUVNiBpKqu5u3xtO1vYg");
       });
     });
   
